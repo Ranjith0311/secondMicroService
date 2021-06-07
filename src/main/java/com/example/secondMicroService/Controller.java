@@ -38,4 +38,15 @@ public class Controller {
         return listFromJackson;
     }
 
+    @GetMapping("/praveen")
+    public String getString2() throws JsonProcessingException {
+        String url="http://testcloudcaller-git-1-pk96375-dev.apps.sandbox.x8i5.p1.openshiftapps.com/call?name=praveen";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        HttpEntity <String> entity = new HttpEntity<String>(headers);
+        String res = restTemplate.exchange(url, HttpMethod.GET, entity, String.class).getBody();
+        System.out.println(res);
+        return res;
+    }
+
 }
